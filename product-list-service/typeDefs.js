@@ -20,7 +20,7 @@ const typeDefs = gql`
         category_id: String!
         img: String!
         colors: [Color!]!
-        sizes: [Size!]!
+        sizes: Size!
     }
 
     type Query {
