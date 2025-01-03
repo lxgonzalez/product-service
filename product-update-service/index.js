@@ -7,7 +7,7 @@ const { ObjectId } = require('mongodb');
 require('dotenv').config();
 
 const app = express();
-
+'ze'
 const resolvers = {
     Query: {
         _empty: () => '',
@@ -17,24 +17,24 @@ const resolvers = {
             const db = await connectToMongo();
             const collectionName = process.env.MONGODB_COLLECTION;
             const productsCollection = db.collection(collectionName);
-            
-            // Verificar si el producto existe
+
             const product = await productsCollection.findOne({ _id: new ObjectId(id) });
             if (!product) {
                 throw new Error('Product not found');
             }
 
-            // Preparar los campos para la actualización
             const updateFields = {};
             if (name && name !== product.name) updateFields.name = name;
             if (price && price !== product.price) updateFields.price = price;
+            if (category_id && category_id !== product.category_id) updateFields.category_id = category_id;
+            if (img && img !== product.img) updateFields.img = img;
+            if (colors) updateFields.colors = colors;
+            if (sizes) updateFields.sizes = sizes;
 
-            // Si no se han proporcionado cambios, lanzar un error
             if (Object.keys(updateFields).length === 0) {
                 throw new Error('No changes made');
             }
 
-            // Realizar la actualización
             const result = await productsCollection.updateOne(
                 { _id: new ObjectId(id) },
                 { $set: updateFields }
@@ -44,7 +44,6 @@ const resolvers = {
                 throw new Error('Product not updated');
             }
 
-            // Obtener el producto actualizado
             const updatedProduct = await productsCollection.findOne({ _id: new ObjectId(id) });
             return updatedProduct;
         },

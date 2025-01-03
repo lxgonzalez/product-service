@@ -6,18 +6,22 @@ const typeDefs = require('./typeDefs');
 
 const resolvers = {
     Mutation: {
-        addProduct: async (_, { name, price }) => {
+        addProduct: async (_, { name, price, category_id, img, colors, sizes }) => {
             const db = await connectToMongo();
             const collectionName = process.env.MONGODB_COLLECTION;
-            const productsCollection = db.collection(collectionName);
 
-            const newProduct = { name, price };
-            const result = await productsCollection.insertOne(newProduct);
-
-            return {
-                _id: result.insertedId,
-                ...newProduct,
+            const newProduct = {
+                name,
+                price,
+                category_id,
+                img,
+                colors,
+                sizes,
             };
+
+            const result = await db.collection(collectionName).insertOne(newProduct);
+
+            return { _id: result.insertedId, ...newProduct };
         },
     },
 };

@@ -15,7 +15,6 @@ const resolvers = {
         deleteProduct: async (_, { id }) => {
             const db = await connectToMongo();
             
-            // Convierte el id a ObjectId
             const productId = new ObjectId(id);
 
             const collectionName = process.env.MONGODB_COLLECTION;
@@ -26,8 +25,10 @@ const resolvers = {
                 throw new Error('Product not found');
             }
 
-            await db.collection('products').deleteOne({ _id: productId });
-
+            const result = await db.collection(collectionName).deleteOne({ _id: productId });
+            if (result.deletedCount === 0) {
+                throw new Error('Failed to delete product');
+            }
             return product;
         },
     },
