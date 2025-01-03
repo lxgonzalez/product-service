@@ -13,7 +13,7 @@ const resolvers = {
         _empty: () => '',
     },
     Mutation: {
-        updateProduct: async (_, { id, name, price }) => {
+        updateProduct: async (_, { id, name, price, category_id, img, colors, sizes }) => {
             const db = await connectToMongo();
             const collectionName = process.env.MONGODB_COLLECTION;
             const productsCollection = db.collection(collectionName);
