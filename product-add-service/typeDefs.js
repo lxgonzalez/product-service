@@ -24,7 +24,7 @@ const typeDefs = gql`
         category_id: String!
         img: String!
         colors: [Color!]!
-        sizes: Size!
+        sizes: [Size]!
     }
 
     type Mutation {
@@ -34,7 +34,7 @@ const typeDefs = gql`
             category_id: String!, 
             img: String!, 
             colors: [InputColor!]!, 
-            sizes: InputSize!
+            sizes: [InputSize]!
         ): Product!
     }
 
