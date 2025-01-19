@@ -7,10 +7,8 @@ const typeDefs = gql`
     }
 
     type Size {
-        s: Boolean!
-        m: Boolean!
-        l: Boolean!
-        xl: Boolean!
+        name: String!
+        available: Boolean!
     }
 
     type Product {
