@@ -49,5 +49,6 @@ jobs:
             docker run -e MONGODB_URL=${{secrets.MONGODB_URL}} \
                        -e MONGODB_DB_NAME=${{secrets.MONGODB_DB_NAME}} \
                        -e MONGODB_COLLECTION=${{secrets.MONGODB_COLLECTION}} \
+                       -e BROKER_URL=${{secrets.BROKER_URL}} \
                        -d --name ${{secrets.DOCKER_IMAGE_DELETE_BYCATEGORY}} \
                        -p 4000:4000 ${{secrets.DOCKER_USERNAME}}/${{secrets.DOCKER_IMAGE_DELETE_BYCATEGORY}}:latest
