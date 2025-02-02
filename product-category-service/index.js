@@ -1,5 +1,6 @@
 const WebSocket = require('ws');
 const { connectToMongo } = require('./connection');
+require('dotenv').config();
 
 const brokerUrl = process.env.BROKER_URL;
 let ws;
