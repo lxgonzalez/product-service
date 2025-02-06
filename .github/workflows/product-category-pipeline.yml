@@ -46,7 +46,7 @@ jobs:
             docker pull ${{ secrets.DOCKER_USERNAME }}/${{secrets.DOCKER_IMAGE_DELETE_BYCATEGORY}}:latest
             docker stop ${{secrets.DOCKER_IMAGE_DELETE_BYCATEGORY}}|| true
             docker rm ${{secrets.DOCKER_IMAGE_DELETE_BYCATEGORY}} || true
-            docker run -e MONGODB_URL=${{secrets.MONGODB_URL}} \
+            docker run --restart always -e MONGODB_URL=${{secrets.MONGODB_URL}} \
                        -e MONGODB_DB_NAME=${{secrets.MONGODB_DB_NAME}} \
                        -e MONGODB_COLLECTION=${{secrets.MONGODB_COLLECTION}} \
                        -e BROKER_URL=${{secrets.BROKER_URL}} \
