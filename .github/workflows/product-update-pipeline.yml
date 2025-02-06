@@ -50,4 +50,4 @@ jobs:
                        -e MONGODB_DB_NAME=${{secrets.MONGODB_DB_NAME}} \
                        -e MONGODB_COLLECTION=${{secrets.MONGODB_COLLECTION}} \
                        -d --name ${{secrets.DOCKER_IMAGE_UPDATE}} \
-                       -p 4000:4000 ${{secrets.DOCKER_USERNAME}}/${{secrets.DOCKER_IMAGE_UPDATE}}:latest
+                       -p 1032:1032 ${{secrets.DOCKER_USERNAME}}/${{secrets.DOCKER_IMAGE_UPDATE}}:latest

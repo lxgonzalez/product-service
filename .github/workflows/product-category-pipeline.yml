@@ -51,4 +51,4 @@ jobs:
                        -e MONGODB_COLLECTION=${{secrets.MONGODB_COLLECTION}} \
                        -e BROKER_URL=${{secrets.BROKER_URL}} \
                        -d --name ${{secrets.DOCKER_IMAGE_DELETE_BYCATEGORY}} \
-                       -p 4000:4000 ${{secrets.DOCKER_USERNAME}}/${{secrets.DOCKER_IMAGE_DELETE_BYCATEGORY}}:latest
+                       -p 1029:1029 ${{secrets.DOCKER_USERNAME}}/${{secrets.DOCKER_IMAGE_DELETE_BYCATEGORY}}:latest
