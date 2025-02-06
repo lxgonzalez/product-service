@@ -26,7 +26,7 @@ const resolvers = {
 
 const app = express();
 
-app.get('/health', (req, res) => {
+app.get('/', (req, res) => {
     res.status(200).send('OK');
   });
 
