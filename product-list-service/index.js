@@ -27,8 +27,8 @@ const resolvers = {
 const app = express();
 
 app.get('/', (req, res) => {
-    res.status(200).send('OK');
-  });
+    res.status(200).send('List Product Service is running ...');
+});
 
 async function startServer() {
     const server = new ApolloServer({

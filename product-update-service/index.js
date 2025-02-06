@@ -7,7 +7,9 @@ const { ObjectId } = require('mongodb');
 require('dotenv').config();
 
 const app = express();
-'ze'
+app.get('/', (req, res) => {
+    res.status(200).send('List Product Service is running ...');
+});
 const resolvers = {
     Query: {
         _empty: () => '',

@@ -1,10 +1,24 @@
 const WebSocket = require('ws');
 const { connectToMongo } = require('./connection');
+const express = require('express');
 require('dotenv').config();
 
 const brokerUrl = process.env.BROKER_URL;
 const topic = 'categories_products';
 let ws;
+
+const app = express();
+
+app.get('/', (req, res) => {
+    if (ws && ws.readyState === WebSocket.OPEN) {
+        res.status(200).send('WebSocket client for delete product by category is connected ...');
+    } else {
+        res.status(500).send('WebSocket connection is not healthy.');
+    }
+});
+
+app.listen(1029, () => {
+});
 
 function connectWebSocket() {
     ws = new WebSocket(brokerUrl);

@@ -28,6 +28,10 @@ const resolvers = {
 
 const app = express();
 
+app.get('/', (req, res) => {
+    res.status(200).send('Add Product Service is running ...');
+});
+
 async function startServer() {
     const server = new ApolloServer({
         typeDefs,

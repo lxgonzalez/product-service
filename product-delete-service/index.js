@@ -7,6 +7,10 @@ const { ObjectId } = require('mongodb');
 
 const app = express();
 
+app.get('/', (req, res) => {
+    res.status(200).send('Delete Product Service is running ...');
+});
+
 const resolvers = {
     Query: {
         _empty: () => '',
