@@ -5,11 +5,6 @@ const typeDefs = gql`
         _empty: String
     }
 
-    type Color {
-        name: String!
-        img: String!
-    }
-
     type Size {
         name: String!
         available: Boolean!
@@ -21,7 +16,6 @@ const typeDefs = gql`
         price: Float!
         category_id: String!
         img: String!
-        colors: [Color!]!
         sizes: [Size]!
     }
 

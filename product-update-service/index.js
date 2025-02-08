@@ -15,7 +15,7 @@ const resolvers = {
         _empty: () => '',
     },
     Mutation: {
-        updateProduct: async (_, { id, name, price, category_id, img, colors, sizes }) => {
+        updateProduct: async (_, { id, name, price, category_id, img, sizes }) => {
             const db = await connectToMongo();
             const collectionName = process.env.MONGODB_COLLECTION;
             const productsCollection = db.collection(collectionName);
@@ -30,7 +30,6 @@ const resolvers = {
             if (price && price !== product.price) updateFields.price = price;
             if (category_id && category_id !== product.category_id) updateFields.category_id = category_id;
             if (img && img !== product.img) updateFields.img = img;
-            if (colors) updateFields.colors = colors;
             if (sizes) updateFields.sizes = sizes;
 
             if (Object.keys(updateFields).length === 0) {

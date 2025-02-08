@@ -1,10 +1,6 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
-    type Color {
-        name: String!
-        img: String!
-    }
 
     type Size {
         name: String!
@@ -17,7 +13,6 @@ const typeDefs = gql`
         price: Float!
         category_id: String!
         img: String!
-        colors: [Color!]!
         sizes: [Size]!
     }
 

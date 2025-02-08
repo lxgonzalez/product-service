@@ -6,7 +6,7 @@ const typeDefs = require('./typeDefs');
 
 const resolvers = {
     Mutation: {
-        addProduct: async (_, { name, price, category_id, img, colors, sizes }) => {
+        addProduct: async (_, { name, price, category_id, img, sizes }) => {
             const db = await connectToMongo();
             const collectionName = process.env.MONGODB_COLLECTION;
 
@@ -15,7 +15,6 @@ const resolvers = {
                 price,
                 category_id,
                 img,
-                colors,
                 sizes,
             };
 
