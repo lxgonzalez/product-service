@@ -56,10 +56,6 @@ Once the application is running, you can access the service by opening your brow
     price: 19.99,
     category_id: "clothing",
     img: "https://example.com/tshirt.jpg",
-    colors: [
-      { name: "red", img: "https://example.com/red.jpg" },
-      { name: "blue", img: "https://example.com/blue.jpg" }
-    ],
     sizes: { s: true, m: true, l: true, xl: false }
   ) {
     _id
@@ -67,10 +63,6 @@ Once the application is running, you can access the service by opening your brow
     price
     category_id
     img
-    colors {
-      name
-      img
-    }
     sizes {
       s
       m
@@ -81,11 +73,12 @@ Once the application is running, you can access the service by opening your brow
 }
 ```
 Example using curl to add a product:
+
 ``` bash
 curl --location --request POST 'http://localhost:4000/' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-   "query": "mutation { addProduct(name: \"T-shirt\", price: 19.99, category_id: \"clothing\", img: \"https://example.com/tshirt.jpg\", colors: [{ name: \"red\", img: \"https://example.com/red.jpg\" }, { name: \"blue\", img: \"https://example.com/blue.jpg\" }], sizes: { s: true, m: true, l: true, xl: false }) { _id name price category_id img colors { name img } sizes { s m l xl } } }"
+   "query": "mutation { addProduct(name: \"T-shirt\", price: 19.99, category_id: \"clothing\", img: \"https://example.com/tshirt.jpg\", sizes: { s: true, m: true, l: true, xl: false }) { _id name price category_id img sizes { s m l xl } } }"
 }'
 ```
 
