@@ -81,6 +81,11 @@ curl --location --request POST 'http://localhost:4000/' \
    "query": "mutation { addProduct(name: \"T-shirt\", price: 19.99, category_id: \"clothing\", img: \"https://example.com/tshirt.jpg\", sizes: { s: true, m: true, l: true, xl: false }) { _id name price category_id img sizes { s m l xl } } }"
 }'
 ```
+---
+## 📽️ Evidence
+![image](https://github.com/user-attachments/assets/0853a987-9c83-4e90-b6b1-1ec3275aa0f9)
+
+
 
 
 
