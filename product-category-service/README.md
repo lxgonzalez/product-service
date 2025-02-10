@@ -1,24 +1,20 @@
-# 🛠 **Product Delete Microservice**
+# 🛠️ Delete Products by Category Microservice
 
-The **Product Delete Service** is a microservice developed using Node.js, Express, Apollo Server, GraphQL, and MongoDB. Its primary functionality is to allow the deletion of product records from a database via a GraphQL API.
+The **Delete Products by Category Service** is a microservice built using Node.js, Express, WebSockets, and MongoDB. Its primary function is to listen for category delete events via a WebSocket connection and remove all products associated with the deleted category from the database.
 
 ---
 
-## 🐳 **Deployment Docker Image**
+## 🐳 **Deploying the Docker Image**
 
-Visit the repository on Docker Hub: [here](https://hub.docker.com/r/lxgonzalez/product-delete-service)
+You can deploy this microservice using Docker by following these steps:
 
-1. **Check if port 4000 is free**.
-2. **Run the following command in your terminal**, replace the environment variables with your actual MongoDB connection credentials:
-   
-    ```bash
-    > docker pull lxgonzalez/product-delete-service
-    > docker pull lxgonzalez/product-delete-service:latest
-    ```
-3. **Start the container:**
-    ```bash
-   > docker run -d --name product-delete-service -p 4000:4000 lxgonzalez/product-delete-service:latest
-    ```
+1. **Ensure port 1029 is available.**
+2. **Run the following commands to pull the image from Docker Hub:**
+
+```bash
+> docker pull lxgonzalez/product-category-service
+> docker pull lxgonzalez/product-category-service:latest
+```
 
 ## 🚀 **Deployment Locally**
 
@@ -28,8 +24,9 @@ Follow these steps to run the API on your local machine:
 
    Clone this repository to your local machine:
   ```bash
-   https://github.com/lxgonzalez/product-service
-   ``` 
+   https://github.com/lxgonzalez/product-service.git
+   ```
+   
 2. Install Dependencies
   ```bash
    npm install
@@ -38,45 +35,23 @@ Follow these steps to run the API on your local machine:
 
 In the root directory, create a .env file and add your MongoDB connection details:
   ```bash
- > MONGODB_URL=mongodb://localhost:27017
- > MONGODB_DB_NAME=your_database_name
+MONGODB_URL=mongodb://your-mongodb-url
+MONGODB_DB_NAME=your-database-name
+MONGODB_COLLECTION=products
+BROKER_URL=ws://your-broker-url
   ```
 4. Run the application
    
  ```bash
    npm start
   ```
-5. Connecting to the Service
-
-Once the application is running, you can access the service by opening your browser and navigating to: http://localhost:4000
-
-6. Sending GraphQL Request
-
-To delete a product, send a mutation request via GraphQL to the following endpoint: http://localhost:4000/graphql
-
-**GraphQL Request Example:**
- ```bash
-   mutation {
-  deleteProduct(id: "your_product_id") {
-    success
-    message
-  }
+## **Webscoket Subscription**
+This service listens for WebSocket messages with the following structure:
+ ```json
+ {
+  "event": "delete_category",
+  "topic": "categories_products",
+  "category_id": "clothing"
 }
-  ```
-**Example using curl:**
- ```bash
-curl --location --request POST 'http://localhost:4000/graphql' \
---header 'Content-Type: application/json' \
---data-raw '{
-  "query": "mutation { deleteProduct(id: \"your_product_id\") { success message } }"
-}'
-  ```
-Note: In the id field, replace "your_product_id" with the ID of the product you wish to delete.
-
----
-
-## 📽️ Evidence
-
-
-
-
+ ```
+Upon receiving a message, the service deletes all products associated with the specified category_id in the MongoDB database.
