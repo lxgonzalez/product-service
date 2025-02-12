@@ -79,3 +79,9 @@ curl --location --request POST 'http://localhost:4000/' \
   "query": "query { findAllproducts { _id name price category_id img sizes { name available } } }"
 }'
 ```
+
+---
+
+## 📽️ Evidence
+![image](https://github.com/user-attachments/assets/2e95885c-2fbb-4178-8b97-17b43d8b6908)
+
