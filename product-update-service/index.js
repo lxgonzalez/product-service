@@ -8,7 +8,7 @@ require('dotenv').config();
 
 const app = express();
 app.get('/', (req, res) => {
-    res.status(200).send('List Product Service is running ...');
+    res.status(200).send('Update Product Service is running ...');
 });
 const resolvers = {
     Query: {
